@@ -36,6 +36,9 @@ Next, Just run the tests
 node tests/basic.js
 ```
 
+Note: you should not modify the tests that come from the tests branch,
+but rather create separate files for your own tests.
+
 API
 ===
 
