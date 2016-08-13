@@ -20,7 +20,7 @@ API
   * checkKeypair(opts, cb)
   * setKeypair(opts, keypair, cb)
   * check(opts, cb)
-  * set(opts, reg, cb)
+  * set(opts, certs, cb)
 ```
 
 Keypairs
