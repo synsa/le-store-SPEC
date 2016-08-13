@@ -329,6 +329,8 @@ var tests = [
   }
 ];
 
+var arr = tests.slice(0);
+
 function run() {
   var test = tests.shift();
   if (!test) {
@@ -336,7 +338,15 @@ function run() {
     return;
   }
 
-  test().then(run);
+  test().then(run, function (err) {
+    var index = arr.length - tests.length - 1;
+    console.error('');
+    console.error(arr[index].toString());
+    console.error('');
+    console.error(err.stack);
+    console.error('');
+    console.error('Failed Test #' + index);
+  });
 }
 
 run();
