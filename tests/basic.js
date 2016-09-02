@@ -94,8 +94,9 @@ var tests = [
   // create a new account
 , function () {
     var account = {
-      receipt: {}
-    , agreeTos: true
+      agreeTos: true
+    , keypair: goodGuy.keypair
+    , receipt: {}
     };
 
     return leStore.accounts.setAsync(goodGuy, account).then(function (account) {
@@ -144,6 +145,14 @@ var tests = [
     return leStore.accounts.checkAsync({
       email: goodGuy.email
     }).then(function (account) {
+
+      if (!account) {
+        throw new Error("should have returned account for " + goodGuy.email);
+      }
+
+      if (!account.keypair) {
+        throw new Error("should have returned account.keypair for " + goodGuy.email);
+      }
 
       if (goodGuy.keypair.privateKeyPem !== account.keypair.privateKeyPem) {
         if (account.keypair.privateKeyJwk) {
